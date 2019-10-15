@@ -1,0 +1,44 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+clrscr();
+int c=0;
+intbeg,mid,end;
+intpos;
+intsize,arr[20],i,s;
+printf("\nEnter your array size:");
+scanf("%d",&size);
+printf("\nEnter array elements:");
+for(i=0;i<size;++i)
+{
+scanf("%d",&arr[i]);
+}
+printf("\nEnter element to be searched for:");
+scanf("%d",&s);
+beg=0;
+end=size-1;
+while(beg<=end)
+{
+mid=(beg+end)/2;
+if(arr[mid]==s)
+{
+c=1;
+pos=mid+1;
+break;
+}
+else if(arr[mid]<s)
+{
+beg=mid+1;
+}
+else
+{
+end=mid-1;
+}
+}
+if(c==1)
+printf("\nElement found at %d",pos);
+else
+printf("\nElement not found!");
+getch();
+}
