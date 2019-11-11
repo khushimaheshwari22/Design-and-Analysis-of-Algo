@@ -1,0 +1,45 @@
+#include<stdio.h>
+#include<conio.h>
+int profit[10][10],no,i,j;
+int y,x,m,n,ne=1;
+int vis[10]={0},minimum,min=0;
+void main()
+{
+clrscr();
+printf("\n************************************");
+printf("\nEnter the number of nodes of the graph:");
+scanf("%d",&no);
+printf("\nEnter the adjacency matrix of the graph:\n");
+for(i=1;i<=no;i++)
+for(j=1;j<=no;j++)
+{
+scanf("%d",&profit[i][j]);
+if(profit[i][j]==0)
+profit[i][j]=999;
+}
+vis[1]=1;
+printf("\n");
+while(ne < no)
+{
+for(i=1,minimum=999;i<=no;i++)
+for(j=1;j<=no;j++)
+if(profit[i][j]< minimum)
+if(vis[i]!=0)
+{
+minimum=profit[i][j];
+m=x=i;
+n=y=j;
+}
+if(vis[x]==0 || vis[y]==0)
+{
+printf("\n Nodes Edge %d:(%d %d) cost:%d",ne++,m,n,minimum);
+min+=minimum;
+vis[n]=1;
+}
+profit[m][n]=profit[n][m]=999;
+}
+printf("\n##################################");
+printf("\n Minimun cost Spanning Tree :%d",min);
+printf("\n##################################");
+getch();
+}
